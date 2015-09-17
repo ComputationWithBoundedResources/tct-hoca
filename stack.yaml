@@ -1,0 +1,41 @@
+flags: {}
+packages:
+- '.'
+
+- location:
+    git: git@github.com:ComputationWithBoundedResources/slogic
+    commit: 1f9c923a4d55ea700aa98a83d99836a3c419385b
+
+- location:
+    git: git@github.com:ComputationWithBoundedResources/term-rewriting-xml
+    commit: 5ebefbadeefa99e35e97d558f93f2597c0c85b09
+
+- location:
+    git: git@github.com:ComputationWithBoundedResources/tct-core
+    commit: a1af02634cffe69d303d32f39bdbdc044f9cbbcc
+- location:
+    git: git@github.com:ComputationWithBoundedResources/tct-common
+    commit: b4d592546e060fb099c56e7c5331ca54d3818342
+- location:
+    git: git@github.com:ComputationWithBoundedResources/tct-trs
+    commit: 981d545eb9c7efed5143c3c3f45f8cf57927cb88
+
+- location:
+    git: git@github.com:ComputationWithBoundedResources/hoca
+    commit: 450d2bd83475c9c4593d865373a7ba089334d951
+- location:
+    git: git@github.com:ComputationWithBoundedResources/term-rewriting-applicative
+    commit: 8456f755c00cbf7dbfb618b645c2668d88baefcf
+- location:
+    git: git@github.com:haskell-rewriting/term-rewriting
+    commit: 9bd9151d3a6d7221f707fabe3629312aee38bb27
+extra-deps:
+- graphviz-2999.18.0.1
+- union-find-array-0.1.0.2
+- multiset-0.2.2
+- dyre-0.8.12
+- fgl-visualize-0.1.0.1
+- dotgen-0.4.2
+- io-storage-0.3
+- xdg-basedir-0.2.2
+resolver: lts-3.4

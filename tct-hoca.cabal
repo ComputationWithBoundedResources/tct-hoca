@@ -1,0 +1,45 @@
+name:          tct-hoca
+version:       3.0.0
+stability:     experimental
+author:
+  Martin Avanzini, Georg Moser, Michael Schaper
+maintainer:
+  Martin Avanzini <martin.avanzini@uibk.ac.at>,
+  Michael Schaper <michael.schaper@uibk.ac.at>,
+license:       BSD3
+license-file:  LICENSE
+category:      Program Analysis
+synopsis:      A Complexity Framework for Term Rewrite Systems
+description:
+  The Tyrolean Complexity Tool (TcT for short) is a tool for proving
+  resource bounds for different formal systems. This package provides
+  techniques for proving upper bounds on PCF.
+build-type:    Simple
+cabal-version: >= 1.8
+
+source-repository head
+  type:     git
+  location: git://github.com/ComputationWithBoundedResources/tct-hoca
+
+executable tct-hoca
+  main-is:
+    tct-hoca.hs
+  hs-source-dirs:
+    src
+  build-depends:
+    ansi-wl-pprint,
+    base,
+    containers,
+    text,
+
+    tct-core,
+    tct-trs,
+
+    term-rewriting,
+    term-rewriting-applicative,
+    hoca
+
+  extensions:
+  ghc-options:
+    -Wall -threaded -fno-warn-orphans -fno-spec-constr-count -rtsopts -with-rtsopts=-N
+
