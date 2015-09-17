@@ -2,8 +2,9 @@ tct-hoca
 ========
 This executable is part of the _Tyrolean Complexity Tool (TcT)_ and provides
 automatic complexity analysis of _higher-order-systems_. It bundles
-  * [hoca transformation](https://github.com/ComputationWithBoundedResources/hoca)
-  * [tct-trs module](ttps://github.com/ComputationWithBoundedResources/hoca)
+  * [hoca](https://github.com/ComputationWithBoundedResources/hoca)
+  * [tct-trs](https://github.com/ComputationWithBoundedResources/hoca)
+to a single executable.
 
 Requirements
 ------------
@@ -19,7 +20,6 @@ For building, you need [ghc](http://www.haskell.org/ghc/) and
 
 Usage
 -----
-
 The installation provides an executable `tct-hoca`. For full options, run
 `tct-hoca --help`.
 
