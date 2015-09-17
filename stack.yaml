@@ -12,7 +12,7 @@ packages:
 
 - location:
     git: git@github.com:ComputationWithBoundedResources/tct-core
-    commit: a1af02634cffe69d303d32f39bdbdc044f9cbbcc
+    commit: f2077feb5d3689751ea6350a3ced57ebfe36511b
 - location:
     git: git@github.com:ComputationWithBoundedResources/tct-common
     commit: b4d592546e060fb099c56e7c5331ca54d3818342
