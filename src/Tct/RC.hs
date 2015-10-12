@@ -2,7 +2,7 @@
 {-# LANGUAGE ImplicitParams            #-}
 {-# LANGUAGE MultiParamTypeClasses     #-}
 {-# LANGUAGE NoMonomorphismRestriction #-}
-module RC
+module Tct.RC
   ( runtime
   , runtime'
   , runtimeSD

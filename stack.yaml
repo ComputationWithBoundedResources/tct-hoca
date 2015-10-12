@@ -5,27 +5,24 @@ packages:
 - location:
     git: git@github.com:ComputationWithBoundedResources/slogic
     commit: 1f9c923a4d55ea700aa98a83d99836a3c419385b
-
 - location:
     git: git@github.com:ComputationWithBoundedResources/term-rewriting-xml
     commit: 5ebefbadeefa99e35e97d558f93f2597c0c85b09
-
 - location:
     git: git@github.com:ComputationWithBoundedResources/tct-core
-    commit: f2077feb5d3689751ea6350a3ced57ebfe36511b
+    commit: 4eb5724321be330c80ed9baadbb11aa5522f7237
 - location:
     git: git@github.com:ComputationWithBoundedResources/tct-common
     commit: b4d592546e060fb099c56e7c5331ca54d3818342
 - location:
     git: git@github.com:ComputationWithBoundedResources/tct-trs
     commit: 981d545eb9c7efed5143c3c3f45f8cf57927cb88
-
 - location:
     git: git@github.com:ComputationWithBoundedResources/hoca
-    commit: 450d2bd83475c9c4593d865373a7ba089334d951
+    commit: c697e209303c4f377037885987ffea4bccc5c50e
 - location:
     git: git@github.com:ComputationWithBoundedResources/term-rewriting-applicative
-    commit: 8456f755c00cbf7dbfb618b645c2668d88baefcf
+    commit: 6e6118f65d680045cb247afbabe134fc8785a237
 - location:
     git: git@github.com:haskell-rewriting/term-rewriting
     commit: 9bd9151d3a6d7221f707fabe3629312aee38bb27
