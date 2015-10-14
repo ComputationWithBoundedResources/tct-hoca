@@ -2,9 +2,9 @@
 {-# LANGUAGE FlexibleInstances #-}
 module Tct.Hoca.Types (
   ML (..)
-  , PCF (..)
-  , TypedPCF (..)
-  , RewriteSystem (..)
+  , PCF
+  , TypedPCF
+  , RewriteSystem
   , TRS
   , ATRS
   , TrsProblem

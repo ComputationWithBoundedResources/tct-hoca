@@ -10,13 +10,13 @@ packages:
     commit: 5ebefbadeefa99e35e97d558f93f2597c0c85b09
 - location:
     git: git@github.com:ComputationWithBoundedResources/tct-core
-    commit: 4eb5724321be330c80ed9baadbb11aa5522f7237
+    commit: 26fd224c8780f4e0a4c81b249d781c9c6b56c6dd
 - location:
     git: git@github.com:ComputationWithBoundedResources/tct-common
-    commit: b4d592546e060fb099c56e7c5331ca54d3818342
+    commit: 27a23e33d00552821141cf2a46654df7ec4559b5
 - location:
     git: git@github.com:ComputationWithBoundedResources/tct-trs
-    commit: 981d545eb9c7efed5143c3c3f45f8cf57927cb88
+    commit: 7af83dc39b04aee5eb656350f613223da1ea2e5f
 - location:
     git: git@github.com:ComputationWithBoundedResources/hoca
     commit: c697e209303c4f377037885987ffea4bccc5c50e

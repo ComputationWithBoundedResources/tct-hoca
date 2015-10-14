@@ -41,7 +41,6 @@ library
    Tct.Hoca.Strategies
    Tct.Hoca.Types
    Tct.Hoca.Processors
-   Tct.RC                                      
  extensions:
    DataKinds
    TypeFamilies
