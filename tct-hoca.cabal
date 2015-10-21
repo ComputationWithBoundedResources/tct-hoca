@@ -28,6 +28,7 @@ library
  build-depends:
     ansi-wl-pprint,
     base,
+    mtl,                
     containers,
     text,
 
@@ -41,6 +42,7 @@ library
    Tct.Hoca.Strategies
    Tct.Hoca.Types
    Tct.Hoca.Processors
+   Tct.Hoca.Config
  extensions:
    DataKinds
    TypeFamilies
@@ -51,7 +53,7 @@ library
 executable tct-hoca
   hs-source-dirs: tct-hoca           
   main-is: Main.hs
-  build-depends: base, mtl, tct-hoca ==1.0, tct-core, tct-trs
+  build-depends: base, tct-hoca ==1.0, tct-core
   ghc-options:
     -Wall -threaded -fno-warn-orphans -fno-spec-constr-count -rtsopts -with-rtsopts=-N
  extensions:
