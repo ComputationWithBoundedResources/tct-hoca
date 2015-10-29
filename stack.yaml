@@ -9,16 +9,16 @@ packages:
     commit: 5ebefbadeefa99e35e97d558f93f2597c0c85b09
 - location:
     git: git@github.com:ComputationWithBoundedResources/tct-core
-    commit: 9b4a891fe1c7240dc3f34c23a20776be74eb9e1f
+    commit: 10f9e35e6edb86af17c26f167038d1e21017f417
 - location:
     git: git@github.com:ComputationWithBoundedResources/tct-common
-    commit: 27a23e33d00552821141cf2a46654df7ec4559b5
+    commit: 942d8421b86df97a537caf8e2d2cc67a84c7020a
 - location:
     git: git@github.com:ComputationWithBoundedResources/tct-trs
-    commit: ccb156938f5ba8eb3e6bc031e38d46c47cdedf1b
+    commit: a9305f4336989cad781170f70034c188bef115c3
 - location:
     git: git@github.com:ComputationWithBoundedResources/hoca
-    commit: b7c4aa87a51898073a9cbd76d9c2ce1b8b8d2986
+    commit: 1fb021921bbb762cb46556c8ff705e1d61fc7c44
 - location:
     git: git@github.com:ComputationWithBoundedResources/term-rewriting-applicative
     commit: 6e6118f65d680045cb247afbabe134fc8785a237
