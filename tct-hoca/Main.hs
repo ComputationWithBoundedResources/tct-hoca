@@ -1,19 +1,20 @@
 module Main where
 
-import Tct.Hoca.Config (hocaConfig)
-import Tct.Hoca.Types
-import Tct.Core.Main (tct3)
+import           Tct.Core.Main        (tct3)
+import           Tct.Hoca.Config      (hocaConfig, hocaDeclarations)
+import           Tct.Hoca.Types
 
-import qualified Tct.Core.Data as T
+import qualified Tct.Core.Data        as T
 
-import Tct.Trs.Data
-import Tct.Trs.Strategy.Web
+import           Tct.Trs.Data
+import           Tct.Trs.Declarations (trsDeclarations)
 
 
 instance T.Declared TrsProblem TrsProblem where
-  decls = [T.SD webDeclaration]
+  decls = trsDeclarations
 
 instance T.Declared ML ML where
+  decls = hocaDeclarations
 
 main :: IO ()
 main = tct3 hocaConfig

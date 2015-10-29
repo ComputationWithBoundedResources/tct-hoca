@@ -15,13 +15,10 @@ import Tct.Hoca.Types
 import qualified Tct.Core.Data as T
 
 import Tct.Trs.Data
--- import qualified Tct.Core.Data as T
 
--- import Tct.Trs.Data
--- import Tct.Trs.Strategy.Web
 
--- instance T.Declared TrsProblem TrsProblem where
---   decls = [T.SD webDeclaration]
+hocaDeclarations :: (T.Declared ML ML, T.Declared TrsProblem TrsProblem) => [StrategyDeclaration ML ML]
+hocaDeclarations = [ hocaDefault, hocaDefunctionalize ]
 
 fun :: Argument 'Optional (Maybe String)
 fun = some (string "function" ["The analysed ML function.",  "It defaults to the last defined function."])
@@ -30,9 +27,6 @@ fun = some (string "function" ["The analysed ML function.",  "It defaults to the
 -- tctStrategy :: T.Declared TrsProblem TrsProblem => Argument 'Required TrsStrategy
 tctStrategy :: T.Declared TrsProblem TrsProblem => Argument 'Required TrsStrategy
 tctStrategy = strat "tct-strategy" ["The TRS strategy to apply after a successfull transformation."]
-
-instance (T.Declared ML ML , T.Declared TrsProblem TrsProblem) => T.DefaultDeclared ML ML where
-  defaultDecls = [hocaDefault, hocaDefunctionalize]
 
 hocaDefault :: (T.Declared ML ML, T.Declared TrsProblem TrsProblem) => StrategyDeclaration ML ML
 -- hocaDefault = SD $ strategy "hoca" (fun, tctStrategy) $ \ mn solve ->
@@ -48,7 +42,6 @@ hocaDefunctionalize = SD $ strategy "defunctionalize" (OneTuple tctStrategy) $ \
 
 hocaConfig :: (T.Declared ML ML, T.Declared TrsProblem TrsProblem) => TctConfig ML
 hocaConfig =
-  (defaultTctConfig parser) { strategies = [hocaDefault, hocaDefunctionalize]
-                            , defaultStrategy = S.hoca Nothing .>>> RC.runtime .>>> abort }
+  (defaultTctConfig parser) { defaultStrategy = S.hoca Nothing .>>> RC.runtime .>>> abort }
   where
     parser fn = (Right <$> ML fn <$> readFile fn) `catchError` (return . Left . show)
