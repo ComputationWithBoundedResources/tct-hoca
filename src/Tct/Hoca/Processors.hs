@@ -30,7 +30,7 @@ import qualified Text.PrettyPrint.ANSI.Leijen    as PP
 import Tct.Core.Data
 import qualified Tct.Trs.Data.ProblemKind as P
 import qualified Tct.Trs.Data.Problem as P
-import qualified Tct.Trs.Data.Trs as Trs
+import qualified Tct.Trs.Data.Rules as Trs
 import qualified Tct.Trs.Data.Symbol          as TrsSymbol
 import qualified Tct.Trs.Data.DependencyGraph as DPG
 import qualified Data.Rewriting.Rule          as Rule
@@ -199,7 +199,7 @@ data ToTctProblem f = ToTctProblem deriving Show
 
 instance (PP.Pretty f, Ord f) => Processor (ToTctProblem f) where
   type In (ToTctProblem f )         = RewriteSystem f
-  type Out (ToTctProblem f)         = P.TrsProblem
+  type Out (ToTctProblem f)         = TrsProblem
   type ProofObject (ToTctProblem f) = None
   execute _ p = succeedWith1 None fromId trsProb where
     trsProb = P.Problem { P.startTerms   = startTerms

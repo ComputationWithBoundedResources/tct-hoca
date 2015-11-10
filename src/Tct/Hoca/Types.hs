@@ -15,7 +15,7 @@ import qualified Hoca.PCF.Core                   as PCF
 import qualified Hoca.PCF.Sugar.Types            as PCFS
 import qualified Hoca.Problem                    as Prob
 import qualified Tct.Core.Common.Xml             as Xml
-import           Tct.Trs.Data.Problem (TrsProblem)
+import           Tct.Trs.Data.Problem            (Trs)
 import qualified Text.PrettyPrint.ANSI.Leijen    as PP
 
 data ML = ML { file :: FilePath, source :: String }
@@ -39,3 +39,5 @@ instance (Eq f, PP.Pretty f) => Xml.Xml (RewriteSystem f) where toXml p = Xml.el
 
 type ATRS = Prob.Problem Symbol.Symbol Int
 type TRS = Prob.Problem Symbol.TRSSymbol Int
+type TrsProblem = Trs
+
