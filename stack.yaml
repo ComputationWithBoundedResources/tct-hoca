@@ -3,19 +3,19 @@ packages:
 - '.'
 - location:
     git: git@github.com:ComputationWithBoundedResources/slogic
-    commit: 1f9c923a4d55ea700aa98a83d99836a3c419385b
+    commit: 54beea4baf8f2ad1f02d86b4319512b6e70ab4a2
 - location:
     git: git@github.com:ComputationWithBoundedResources/term-rewriting-xml
-    commit: 5ebefbadeefa99e35e97d558f93f2597c0c85b09
+    commit: d535bce1db3ea4c76df3aa202bcac441365ece2b
 - location:
     git: git@github.com:ComputationWithBoundedResources/tct-core
-    commit: 10f9e35e6edb86af17c26f167038d1e21017f417
+    commit: cfe3ad6b9062c2fdf397734d69c263920f99165e
 - location:
     git: git@github.com:ComputationWithBoundedResources/tct-common
-    commit: 942d8421b86df97a537caf8e2d2cc67a84c7020a
+    commit: b88ce5394cb9a7dde6d3a08a0a15391991e36ed5
 - location:
     git: git@github.com:ComputationWithBoundedResources/tct-trs
-    commit: a9305f4336989cad781170f70034c188bef115c3
+    commit: 9d7df6ca9c35d51e5b657260feec7d2afa38532c
 - location:
     git: git@github.com:ComputationWithBoundedResources/hoca
     commit: 1fb021921bbb762cb46556c8ff705e1d61fc7c44
@@ -32,6 +32,4 @@ extra-deps:
 - dyre-0.8.12
 - fgl-visualize-0.1.0.1
 - dotgen-0.4.2
-- io-storage-0.3
-- xdg-basedir-0.2.2
 resolver: lts-3.4
