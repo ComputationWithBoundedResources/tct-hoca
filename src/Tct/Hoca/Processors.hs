@@ -31,6 +31,7 @@ import Tct.Core.Data
 import qualified Tct.Trs.Data.ProblemKind as P
 import qualified Tct.Trs.Data.Problem as P
 import qualified Tct.Trs.Data.Rules as Trs
+import qualified Tct.Trs.Data.Signature as Sig (defineds, constructors)
 import qualified Tct.Trs.Data.Symbol          as TrsSymbol
 import qualified Tct.Trs.Data.DependencyGraph as DPG
 import qualified Data.Rewriting.Rule          as Rule
@@ -63,7 +64,7 @@ runHocaWith f t _ prob =
     Just r -> succeedWith1 (fst r') fromId (snd r') where r' = f r
                                                           
 runHoca :: (Processor p, Forking p ~ Id, ProofObject p ~ None) => (In p Hoca.:=> Out p) -> p -> In p -> TctM (Return p)
-runHoca t = runHocaWith ((,) None) t 
+runHoca = runHocaWith ((,) None)
 
 -- * Hoca transformations as processors
 ----------------------------------------------------------------------
@@ -202,18 +203,19 @@ instance (PP.Pretty f, Ord f) => Processor (ToTctProblem f) where
   type Out (ToTctProblem f)         = TrsProblem
   type ProofObject (ToTctProblem f) = None
   execute _ p = succeedWith1 None fromId trsProb where
-    trsProb = P.Problem { P.startTerms   = startTerms
-                        , P.strategy = P.Innermost
-                        , P.signature = Trs.signature trs
+    trsProb = P.Problem { P.startTerms = P.BasicTerms ds cs
+                        , P.strategy   = P.Innermost
+                        , P.signature  = Trs.signature trs
                         , P.strictDPs  = Trs.empty
                         , P.strictTrs  = trs
                         , P.weakDPs    = Trs.empty
                         , P.weakTrs    = Trs.empty
-                        , P.dpGraph = DPG.empty }
-    startTerms = P.BasicTerms (toTctFuns (Hoca.defs (Hoca.startTerms p)))
-                              (toTctFuns (Hoca.constrs (Hoca.startTerms p)))
+                        , P.dpGraph    = DPG.empty }
     trs = Trs.fromList [ Rule.Rule (toTctTerm l) (toTctTerm r)
                        | Rule.Rule l r <- Hoca.theRule `map` Hoca.rules p ]
+    sig = Trs.signature trs
+    ds  = toTctFuns (Hoca.defs (Hoca.startTerms p))    `Set.intersection` Sig.defineds sig
+    cs  = toTctFuns (Hoca.constrs (Hoca.startTerms p)) `Set.intersection` Sig.constructors sig
     toTctTerm = Term.map toTctFun toTctVar
     toTctFuns = Set.fromList . map toTctFun
     toTctFun f = TrsSymbol.fun (PP.displayS (PP.renderCompact (PP.pretty f)) "")
