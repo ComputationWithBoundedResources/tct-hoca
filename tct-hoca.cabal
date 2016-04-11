@@ -1,5 +1,5 @@
 name:          tct-hoca
-version:       1.0
+version:       2.0
 stability:     experimental
 author:
   Martin Avanzini, Georg Moser, Michael Schaper
@@ -39,10 +39,11 @@ library
     term-rewriting-applicative,
     hoca
  exposed-modules:
+   Tct.Hoca.Config
+   Tct.Hoca.Interactive
+   Tct.Hoca.Processors
    Tct.Hoca.Strategies
    Tct.Hoca.Types
-   Tct.Hoca.Processors
-   Tct.Hoca.Config
  extensions:
    DataKinds
    TypeFamilies
@@ -53,7 +54,7 @@ library
 executable tct-hoca
   hs-source-dirs: tct-hoca           
   main-is: Main.hs
-  build-depends: base, tct-hoca ==1.0, tct-core, tct-trs
+  build-depends: base, tct-hoca ==2.0, tct-core, tct-trs
   ghc-options:
     -Wall -threaded -fno-warn-orphans -fno-spec-constr-count -rtsopts -with-rtsopts=-N
  extensions:
