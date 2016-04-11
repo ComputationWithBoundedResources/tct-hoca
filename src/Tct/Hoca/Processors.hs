@@ -1,14 +1,14 @@
-{-# LANGUAGE TypeFamilies #-}
-{-# LANGUAGE TypeOperators #-}
-{-# LANGUAGE FlexibleContexts #-}
+{-# LANGUAGE FlexibleContexts  #-}
 {-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE TypeFamilies      #-}
+{-# LANGUAGE TypeOperators     #-}
 
 module Tct.Hoca.Processors
        (
          -- * Processor Implementation of Hoca Library
          Desugar (..)
          , Defunctionalization (..)
-         , NeededRules (..) 
+         , NeededRules (..)
          , UncurryATRS (..)
          , Inline (..)
          , InlineType (..)
@@ -22,32 +22,34 @@ module Tct.Hoca.Processors
        )
        where
 
-import Tct.Hoca.Types
+import           Tct.Hoca.Types
 
-import qualified Tct.Core.Common.Xml             as Xml
-import qualified Text.PrettyPrint.ANSI.Leijen    as PP
+import qualified Tct.Core.Common.Xml          as Xml
+import           Tct.Core.Data
 
-import Tct.Core.Data
-import qualified Tct.Trs.Data.ProblemKind as P
-import qualified Tct.Trs.Data.Problem as P
-import qualified Tct.Trs.Data.Rules as Trs
-import qualified Tct.Trs.Data.Signature as Sig (defineds, constructors)
-import qualified Tct.Trs.Data.Symbol          as TrsSymbol
-import qualified Tct.Trs.Data.DependencyGraph as DPG
 import qualified Data.Rewriting.Rule          as Rule
 import qualified Data.Rewriting.Term          as Term
+import qualified Tct.Trs.Data.DependencyGraph as DPG
+import qualified Tct.Trs.Data.Problem         as P
+import qualified Tct.Trs.Data.ProblemKind     as P
+import qualified Tct.Trs.Data.Rules           as Trs
+import qualified Tct.Trs.Data.Signature       as Sig (constructors, defineds)
+import qualified Tct.Trs.Data.Symbol          as TrsSymbol
 
-import qualified Hoca.Problem as Hoca
-import qualified Hoca.Transform as Hoca
-import Hoca.Transform ((:=>))
-import qualified Hoca.Transform.Inlining as Hoca.Inline
-import qualified Hoca.PCF.Sugar as Hoca
-import qualified Hoca.PCF.Desugar as Hoca
-import qualified Hoca.PCF.Core.DMInfer as Hoca.DMInfer
-import qualified Hoca.Transform.Instantiate as Hoca.Instantiate
-import qualified Hoca.Problem.DFA as Hoca.Instantiate (DFAGrammar)
-import qualified Hoca.Data.MLTypes as Hoca.Instantiate (Type)
-import qualified Data.Set as Set
+import qualified Hoca.Data.MLTypes            as Hoca.Instantiate (Type)
+import qualified Hoca.PCF.Core.DMInfer        as Hoca.DMInfer
+import qualified Hoca.PCF.Desugar             as Hoca
+import qualified Hoca.PCF.Sugar               as Hoca
+import qualified Hoca.Problem                 as Hoca
+import qualified Hoca.Problem.DFA             as Hoca.Instantiate (DFAGrammar)
+import           Hoca.Transform               ((:=>))
+import qualified Hoca.Transform               as Hoca
+import qualified Hoca.Transform.Inlining      as Hoca.Inline
+import qualified Hoca.Transform.Instantiate   as Hoca.Instantiate
+
+import qualified Data.Set                     as Set
+import           Data.Typeable                (Typeable)
+import qualified Text.PrettyPrint.ANSI.Leijen as PP
 
 
 -- utilities
@@ -62,7 +64,7 @@ runHocaWith f t _ prob =
   case Hoca.run t prob of
     Nothing -> abortWith (PP.text "transformation inapplicable")
     Just r -> succeedWith1 (fst r') fromId (snd r') where r' = f r
-                                                          
+
 runHoca :: (Processor p, Forking p ~ Id, ProofObject p ~ None) => (In p Hoca.:=> Out p) -> p -> In p -> TctM (Return p)
 runHoca = runHocaWith ((,) None)
 
@@ -98,7 +100,7 @@ instance Processor Desugar where
     where
       catchErr r toErr = either (Left . toErr) Right r
       toResult = either abortWith (succeedWith1 None fromId)
-    
+
 -- ** defunctionalisation
 ----------------------------------------------------------------------
 
@@ -142,7 +144,7 @@ instance Show (InlineSelector f) where show (InlineSelector n _) = "<" ++ n ++ "
 data InlineType = InlineFull | InlineRewrite deriving Show
 data Inline f = Inline { inlineType :: InlineType, inlineSelect :: InlineSelector f } deriving Show
 
-instance (PP.Pretty f, Ord f) => Processor (Inline f) where
+instance (PP.Pretty f, Ord f, Typeable f) => Processor (Inline f) where
   type In (Inline f)          = RewriteSystem f
   type Out (Inline f)         = RewriteSystem f
   type ProofObject (Inline f) = None
@@ -156,14 +158,14 @@ instance (PP.Pretty f, Ord f) => Processor (Inline f) where
 data URType = Syntactic | DFA deriving (Show, Eq)
 data UsableRules f = UsableRules { urType :: URType } deriving Show
 
-instance (PP.Pretty f, Ord f) => Processor (UsableRules f) where
+instance (PP.Pretty f, Ord f, Typeable f) => Processor (UsableRules f) where
   type In (UsableRules f)          = RewriteSystem f
   type Out (UsableRules f)         = RewriteSystem f
   type ProofObject (UsableRules f) = None
   execute t = runHoca usableRules t where
     usableRules | urType t == DFA = Hoca.usableRulesDFA
                 | otherwise       = Hoca.usableRulesSyntactic
-              
+
 -- ** instantiation
 ----------------------------------------------------------------------
 
@@ -175,7 +177,7 @@ instance Show (CFARefinement f) where show (CFARefinement n _) = "<" ++ n ++ ">"
 instance Show f => Xml.Xml (Automaton f)  where
   toXml dfa = Xml.elt "dfa" [Xml.text (show dfa)]
 
-instance (Show f, PP.Pretty f, Ord f) => Processor (CFA f) where
+instance (Show f, PP.Pretty f, Ord f, Typeable f) => Processor (CFA f) where
   type In (CFA f)          = RewriteSystem f
   type Out (CFA f)         = RewriteSystem f
   type ProofObject (CFA f) = Automaton f
@@ -187,7 +189,7 @@ instance (Show f, PP.Pretty f, Ord f) => Processor (CFA f) where
 
 data Compression f = Compression deriving Show
 
-instance (PP.Pretty f, Ord f) => Processor (Compression f) where
+instance (PP.Pretty f, Ord f, Typeable f) => Processor (Compression f) where
   type In (Compression f )         = RewriteSystem f
   type Out (Compression f)         = RewriteSystem f
   type ProofObject (Compression f) = None
@@ -198,7 +200,7 @@ instance (PP.Pretty f, Ord f) => Processor (Compression f) where
 
 data ToTctProblem f = ToTctProblem deriving Show
 
-instance (PP.Pretty f, Ord f) => Processor (ToTctProblem f) where
+instance (PP.Pretty f, Ord f, Typeable f) => Processor (ToTctProblem f) where
   type In (ToTctProblem f )         = RewriteSystem f
   type Out (ToTctProblem f)         = TrsProblem
   type ProofObject (ToTctProblem f) = None
@@ -220,3 +222,4 @@ instance (PP.Pretty f, Ord f) => Processor (ToTctProblem f) where
     toTctFuns = Set.fromList . map toTctFun
     toTctFun f = TrsSymbol.fun (PP.displayS (PP.renderCompact (PP.pretty f)) "")
     toTctVar v = TrsSymbol.var ("x" ++ show v)
+
