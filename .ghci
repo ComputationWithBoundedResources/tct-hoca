@@ -1,0 +1,5 @@
+:set prompt "tct> "
+:module +Tct.Core.Interactive Tct.Trs.Interactive
+:l Main
+welcome
+help
