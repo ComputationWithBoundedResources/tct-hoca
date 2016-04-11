@@ -26,6 +26,7 @@ packages:
     git: git@github.com:haskell-rewriting/term-rewriting
     commit: 9bd9151d3a6d7221f707fabe3629312aee38bb27
 extra-deps:
+- optparse-applicative-0.12.1.0
 - graphviz-2999.18.0.1
 - union-find-array-0.1.0.2
 - multiset-0.2.2
