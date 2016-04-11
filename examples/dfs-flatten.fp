@@ -1,5 +1,4 @@
-
-(* flatten example from 'Static Determination of Quantitative Resource Usage for Higher-Order Programs' by Jost et. al. *)
+ (* flatten example from 'Static Determination of Quantitative Resource Usage for Higher-Order Programs' by Jost et. al. *)
 
 type 'a tree = Leaf of 'a | Node of 'a tree * 'a tree
 ;;

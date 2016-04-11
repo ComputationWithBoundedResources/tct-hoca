@@ -9,19 +9,19 @@ packages:
     commit: d535bce1db3ea4c76df3aa202bcac441365ece2b
 - location:
     git: git@github.com:ComputationWithBoundedResources/tct-core
-    commit: 6749fdef9fa092fe04d5e801977f663c656b4f65
+    commit: e60ed3a17f691e066388bd6281aff1c9955f22d4
 - location:
     git: git@github.com:ComputationWithBoundedResources/tct-common
-    commit: b88ce5394cb9a7dde6d3a08a0a15391991e36ed5
+    commit: f950378c5ba414f5f02916046ddcb4af4ec6fb19
 - location:
     git: git@github.com:ComputationWithBoundedResources/tct-trs
-    commit: a888652e9e3a12b595c29e6f0a5ddbbd25c1abfe
+    commit: 0ba595f4a51d77b8cfd366c3c292fb858c1a6ce0
 - location:
     git: git@github.com:ComputationWithBoundedResources/hoca
-    commit: 1fb021921bbb762cb46556c8ff705e1d61fc7c44
+    commit: e8f2eb9804630721ac060341da3125cc89e13631
 - location:
     git: git@github.com:ComputationWithBoundedResources/term-rewriting-applicative
-    commit: 6e6118f65d680045cb247afbabe134fc8785a237
+    commit: f4ac8409a21b47b2f08af4c18f45103925082a80
 - location:
     git: git@github.com:haskell-rewriting/term-rewriting
     commit: 9bd9151d3a6d7221f707fabe3629312aee38bb27

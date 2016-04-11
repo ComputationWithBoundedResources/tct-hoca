@@ -12,7 +12,7 @@ hocaDeclarations :: Declared TrsProblem TrsProblem => [StrategyDeclaration ML ML
 hocaDeclarations = [ hocaDefault, hocaDefunctionalize ]
 
 fun :: Argument 'Optional (Maybe String)
-fun = some (string "function" ["The analysed ML function.",  "It defaults to the last defined function."])
+fun = some (string "call" ["The analysed ML expression.", "It defaults to the last defined function."])
   `optional` Nothing
 
 tctStrategy :: Declared TrsProblem TrsProblem => Argument 'Required TrsStrategy

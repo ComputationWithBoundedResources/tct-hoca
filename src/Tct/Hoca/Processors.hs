@@ -56,7 +56,7 @@ import qualified Text.PrettyPrint.ANSI.Leijen as PP
 
 data None = None deriving Show
 instance Xml.Xml None where toXml _ = Xml.elt "none" []
-instance PP.Pretty None where pretty = const PP.empty
+instance PP.Pretty None where pretty = const (PP.text "none")
 
 
 runHocaWith :: (Processor p, Forking p ~ Id) => (r -> (ProofObject p, Out p)) -> (In p :=> r) -> p -> In p -> TctM (Return p)
