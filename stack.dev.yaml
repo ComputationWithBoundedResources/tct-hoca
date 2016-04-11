@@ -1,0 +1,21 @@
+flags: {}
+packages:
+- '.'
+
+- '../term-rewriting'
+- '../term-rewriting-applicative'
+- '../term-rewriting-xml'
+
+- '../slogic'
+- '../tct-core'
+- '../tct-common'
+- '../tct-trs'
+
+- '../hoca'
+extra-deps:
+- graphviz-2999.18.0.1
+- union-find-array-0.1.0.2
+- multiset-0.2.2
+- fgl-visualize-0.1.0.1
+- dotgen-0.4.2
+resolver: lts-5.12
