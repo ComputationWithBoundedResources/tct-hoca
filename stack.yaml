@@ -1,31 +1,23 @@
 flags: {}
 packages:
 - '.'
-- location:
-    git: https://github.com/ComputationWithBoundedResources/slogic
-    commit: 54beea4baf8f2ad1f02d86b4319512b6e70ab4a2
-- location:
-    git: https://github.com/ComputationWithBoundedResources/term-rewriting-xml
-    commit: d535bce1db3ea4c76df3aa202bcac441365ece2b
-- location:
-    git: https://github.com/ComputationWithBoundedResources/tct-core
-    commit: e60ed3a17f691e066388bd6281aff1c9955f22d4
-- location:
-    git: https://github.com/ComputationWithBoundedResources/tct-common
-    commit: f950378c5ba414f5f02916046ddcb4af4ec6fb19
-- location:
-    git: https://github.com/ComputationWithBoundedResources/tct-trs
-    commit: 0ba595f4a51d77b8cfd366c3c292fb858c1a6ce0
-- location:
-    git: https://github.com/ComputationWithBoundedResources/hoca
-    commit: e8f2eb9804630721ac060341da3125cc89e13631
-- location:
-    git: https://github.com/ComputationWithBoundedResources/term-rewriting-applicative
-    commit: f4ac8409a21b47b2f08af4c18f45103925082a80
-- location:
-    git: https://github.com/haskell-rewriting/term-rewriting
-    commit: 9bd9151d3a6d7221f707fabe3629312aee38bb27
 extra-deps:
+- git: https://github.com/ComputationWithBoundedResources/slogic
+  commit: 54beea4baf8f2ad1f02d86b4319512b6e70ab4a2
+- git: https://github.com/ComputationWithBoundedResources/term-rewriting-xml
+  commit: d535bce1db3ea4c76df3aa202bcac441365ece2b
+- git: https://github.com/ComputationWithBoundedResources/tct-core
+  commit: e60ed3a17f691e066388bd6281aff1c9955f22d4
+- git: https://github.com/ComputationWithBoundedResources/tct-common
+  commit: f950378c5ba414f5f02916046ddcb4af4ec6fb19
+- git: https://github.com/ComputationWithBoundedResources/tct-trs
+  commit: 0ba595f4a51d77b8cfd366c3c292fb858c1a6ce0
+- git: https://github.com/ComputationWithBoundedResources/hoca
+  commit: e8f2eb9804630721ac060341da3125cc89e13631
+- git: https://github.com/ComputationWithBoundedResources/term-rewriting-applicative
+  commit: f4ac8409a21b47b2f08af4c18f45103925082a80
+- git: https://github.com/haskell-rewriting/term-rewriting
+  commit: 9bd9151d3a6d7221f707fabe3629312aee38bb27
 - optparse-applicative-0.12.1.0
 - graphviz-2999.18.0.1
 - union-find-array-0.1.0.2
