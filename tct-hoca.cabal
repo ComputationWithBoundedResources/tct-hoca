@@ -1,11 +1,11 @@
 name:          tct-hoca
-version:       2.0
+version:       3.3
 stability:     experimental
 author:
   Martin Avanzini, Georg Moser, Michael Schaper
 maintainer:
   Martin Avanzini <martin.avanzini@uibk.ac.at>,
-  Michael Schaper <michael.schaper@uibk.ac.at>,
+  Michael Schaper <michael.schaper@student.uibk.ac.at>,
 license:       BSD3
 license-file:  LICENSE
 category:      Program Analysis
@@ -32,12 +32,13 @@ library
     containers,
     text,
 
-    tct-core,
-    tct-trs,
-
     term-rewriting,
     term-rewriting-applicative,
-    hoca
+
+    hoca     >= 0.5,
+    tct-core >= 3.3,
+    tct-trs  >= 3.3
+
  exposed-modules:
    Tct.Hoca.Config
    Tct.Hoca.Interactive
@@ -54,7 +55,7 @@ library
 executable tct-hoca
   hs-source-dirs: tct-hoca           
   main-is: Main.hs
-  build-depends: base, tct-hoca ==2.0, tct-core, tct-trs
+  build-depends: base, tct-hoca == 3.3, tct-core, tct-trs
   ghc-options:
     -Wall -threaded -fno-warn-orphans -fno-spec-constr-count -rtsopts -with-rtsopts=-N
  extensions:
